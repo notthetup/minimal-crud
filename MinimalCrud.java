@@ -63,7 +63,8 @@ public class MinimalCrud
                               HttpServletResponse response ) throws ServletException,
                 IOException
         {
-            System.out.println("GET at path : " + request.getServletPath() + ", with query string : " + request.getQueryString());
+            System.out.println("GET at path : " + request.getServletPath() + "\n" +
+                "- query string : " + request.getQueryString() + "\n");
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().println("<h1>Hello from CrudServlet</h1>");
@@ -75,7 +76,10 @@ public class MinimalCrud
                 IOException
         {
             String body = request.getReader().lines().reduce("",String::concat);
-            System.out.println("POST at path : " + request.getServletPath() + ", with query string : " + request.getQueryString() + ", with Content-Type : " + request.getContentType() + ", with Body : " + body);
+            System.out.println("POST at path : " + request.getServletPath() + "\n" +
+                "- query string : " + request.getQueryString() + "\n" +
+                "- Content-Type : " + request.getContentType() + "\n" +
+                "- Body : " + body  + "\n");
             response.setStatus(HttpServletResponse.SC_OK);
         }
 
@@ -86,7 +90,10 @@ public class MinimalCrud
                 IOException
         {
             String body = request.getReader().lines().reduce("",String::concat);
-            System.out.println("PUT at path : " + request.getServletPath() + ", with query string : " + request.getQueryString() + ", with Content-Type : " + request.getContentType()  + ", with Body : " + body);
+            System.out.println("PUT at path : " + request.getServletPath()  + "\n" +
+                "- query string : " + request.getQueryString() + "\n" +
+                "- with Content-Type : " + request.getContentType()  + "\n" +
+                "- Body : " + body);
             response.setStatus(HttpServletResponse.SC_OK);
         }
 

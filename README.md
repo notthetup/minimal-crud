@@ -7,7 +7,7 @@ Does a simple CRUD based application need so much code/configuration? Why is the
 
 So I set out to creat the simplest CRUD server using Jetty and nothing else.
 
-Inspired by [jetty documentation](https://www.eclipse.org/jetty/documentation/current/embedding-jetty.html) and [](https://github.com/mcaprari/simple-webserver-and-rest-with-jetty-and-no-xml)
+Inspired by [jetty documentation](https://www.eclipse.org/jetty/documentation/current/embedding-jetty.html) and [simple-webserver-and-rest-with-jetty-and-no-xml](https://github.com/mcaprari/simple-webserver-and-rest-with-jetty-and-no-xml)
 
 
 ## Installation
@@ -46,32 +46,84 @@ These [curl](https://curl.haxx.se/) commands can help you test the server
 
 ### GET
 
+GET with a simple [query string](https://en.wikipedia.org/wiki/Query_string)
+
 ```bash
 	curl "localhost:8080/foo?name=ferret"
 ```
 
+will yield
+
+```
+GET at path : /foo
+- query string : name=ferret
+```
+
 ### PUT
+
+PUT with a [x-www-form-urlencoded](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) key-value pairs like a [HTML form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
 
 ```bash
 	curl -X PUT -d "{value:20}" "localhost:8080/foo"
 ```
 
+will yield
+
+```
+PUT at path : /foo
+- query string : null
+- with Content-Type : application/x-www-form-urlencoded
+- Body : {value:20}
+```
 
 ### POST
+
+POST with a simple [query string](https://en.wikipedia.org/wiki/Query_string)
 
 ```bash
 	curl -X POST "localhost:8080/asdad?name=ferret"
 ```
 
+will yield
+
+```
+POST at path : /asdad
+- query string : name=ferret
+- Content-Type : null
+- Body :
+```
+
+POST with a [x-www-form-urlencoded](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) key-value pairs like a [HTML form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
 
 ```bash
 	curl -X POST -d "{value:20}" "localhost:8080/bar/foo"
 ```
 
+will yield
+
+```
+POST at path : /bar/foo
+- query string : null
+- Content-Type : application/x-www-form-urlencoded
+- Body : {value:20}
+```
+
+POST with a file attachment using [HTTP multipart formposts](https://ec.haxx.se/http-multipart.html)
 
 ```bash
 	curl -F 'data=MinimalCrud.java' "localhost:8080/foo/bar"
 ```
+
+will yield
+
+```
+POST at path : /foo/bar
+- query string : null
+- Content-Type : multipart/form-data; boundary=------------------------193fa21a346ad4ca
+- Body : --------------------------193fa21a346ad4caContent-Disposition: form-data; name="data"MinimalCrud.java--------------------------193fa21a346ad4ca--
+```
+
+> Note : This is not the full body of the file, just the first part of the HTTP multipart formpost
 
 
 ### DELETE
@@ -80,3 +132,8 @@ These [curl](https://curl.haxx.se/) commands can help you test the server
 	curl -X DELETE "localhost:8080/bar"
 ```
 
+will yield
+
+```
+DELETE at path /bar
+```
