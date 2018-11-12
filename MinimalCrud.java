@@ -98,7 +98,7 @@ public class MinimalCrud
                     if (filename == null) {
                         processTextPart(part);
                     } else if (!filename.isEmpty()) {
-                        System.out.println("\t File part :" + filename);
+                        System.out.println("\t File part : " + filename);
                         processFilePart(part, filename);
                     }
                 }

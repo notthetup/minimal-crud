@@ -49,7 +49,7 @@ These [curl](https://curl.haxx.se/) commands can help you test the server
 GET with a simple [query string](https://en.wikipedia.org/wiki/Query_string)
 
 ```bash
-	curl "localhost:8080/foo?name=ferret"
+curl "localhost:8080/foo?name=ferret"
 ```
 
 will yield
@@ -64,7 +64,7 @@ GET at path : /foo
 PUT with a [x-www-form-urlencoded](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) key-value pairs like a [HTML form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
 
 ```bash
-	curl -X PUT -d "{value:20}" "localhost:8080/foo"
+curl -X PUT -d "{value:20}" "localhost:8080/foo"
 ```
 
 will yield
@@ -81,7 +81,7 @@ PUT at path : /foo
 POST with a simple [query string](https://en.wikipedia.org/wiki/Query_string)
 
 ```bash
-	curl -X POST "localhost:8080/asdad?name=ferret"
+curl -X POST "localhost:8080/asdad?name=ferret"
 ```
 
 will yield
@@ -96,7 +96,7 @@ POST at path : /asdad
 POST with a [x-www-form-urlencoded](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) key-value pairs like a [HTML form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
 
 ```bash
-	curl -X POST -d "{value:20}" "localhost:8080/bar/foo"
+curl -X POST -d "{value:20}" "localhost:8080/bar/foo"
 ```
 
 will yield
@@ -111,7 +111,7 @@ POST at path : /bar/foo
 POST with a file attachment using [HTTP multipart formposts](https://ec.haxx.se/http-multipart.html)
 
 ```bash
-	curl -F 'data=MinimalCrud.java' "localhost:8080/foo/bar"
+curl  -F 'name=Dan' -F data=@MinimalCrud.java "localhost:8080/foo/bar"
 ```
 
 will yield
@@ -119,8 +119,10 @@ will yield
 ```
 POST at path : /foo/bar
 - query string : null
-- Content-Type : multipart/form-data; boundary=------------------------193fa21a346ad4ca
-- Body : --------------------------193fa21a346ad4caContent-Disposition: form-data; name="data"MinimalCrud.java--------------------------193fa21a346ad4ca--
+- Content-Type : multipart/form-data; boundary=------------------------d2cb946bff9b470e
+- Body :
+	 File part : MinimalCrud.java
+	 Text Part : name : Dan
 ```
 
 > Note : This is not the full body of the file, just the first part of the HTTP multipart formpost
