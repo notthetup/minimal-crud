@@ -1,5 +1,5 @@
 # jetty-crud
-Simple CRUD Web Server using Jetty.
+Simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) Web Server using Jetty.
 
 If you search around the web for examples of running a simple web server using [Jetty](https://www.eclipse.org/jetty/) all the popular results use complicated tools like [maven](https://maven.apache.org/) and [gradle](https://gradle.org/) which need gigantic configuration files, sometimes in written in XML (ugh!), lots of external dependencies (I'm looking at your [Spring Boot](https://spring.io/projects/spring-boot)) and all sorts of crud!
 
